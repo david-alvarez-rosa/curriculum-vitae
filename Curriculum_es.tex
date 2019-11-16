@@ -1,0 +1,209 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[10pt, a4paper, ragged2e]{altacv}
+
+\geometry{left = 1cm, right = 9cm, marginparwidth = 6.8cm, marginparsep = 1.2cm,
+  top = 1.25cm, bottom = 1.25cm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage[hidelinks]{hyperref}
+\usepackage{changepage}
+
+\definecolor{Mulberry}{HTML}{72243D}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{heading}{Sepia}
+\colorlet{accent}{Mulberry}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+
+\newcommand{\grade}[1]{%
+  \begin{tikzpicture}
+    \clip (1em-.4em,-.35em) rectangle (5em +.5em ,1em);
+    \foreach \x in {1,2,...,5}{
+        \path[{fill=body!30}] (\x em,0) circle (.35em); % backColor
+    }
+    \begin{scope}
+    \clip (1em-.4em,-.35em) rectangle (#1em +.5em ,1em);
+    \foreach \x in {1,2,...,5}{
+        \path[{fill=accent}] (\x em,0) circle (.35em); % frontColor
+    }
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+\renewcommand{\cvskill}[2]{%
+  \textcolor{emphasis}{\textbf{#1}}\hfill
+  \grade{#2}\par
+}
+
+
+\begin{document}
+
+\name{David Álvarez Rosa}
+\tagline{Estudiante de Matemáticas e Ingeniería Industrial \vspace{.05cm}}
+\photo{1cm}{blank}
+\personalinfo{%
+  \email{\href{mailto:david@alvarezrosa.com}{\hspace{.025cm}david@alvarezrosa.com}}
+  \phone{\href{tel:+34647133930}{+34 647 13 39 30 \hspace{.925cm}}}
+  \mailaddress{
+    \href{https://www.google.com/maps/place/Calle+Agrupación+Olaz,+16,+31620+Olaz}
+    {C/ Agrupación Olaz nº 16, Bajo}}
+  \location{\href{https://es.wikipedia.org/wiki/Olaz}{Olaz, Navarra}}
+  \homepage{\href{https://david.alvarezrosa.com}{david.alvarezrosa.com \hspace{.085cm}}}
+  \printinfo{\faGitlab}{\href{https://gitlab.com/DavidAlvarez}
+    {gitlab.com/DavidAlvarez}}
+  \printinfo{\faBirthdayCake}{ Octubre 10, 1998}
+}
+
+\begin{adjustwidth}{0pt}{-10pt}
+  \begin{fullwidth}
+    \makecvheader
+  \end{fullwidth}
+\end{adjustwidth}
+
+\medskip
+\cvsection[page1sidebar_es]{Educación}
+
+\cvevent{\href{https://www.upc.edu/es/grados/matematicas-barcelona-fme}
+  {Grado en Matemáticas} \hfill \small{240
+    \href{https://es.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System}
+    {ECTS}}}
+{\href{https://upc.edu}{Universidad Politécnica de Cataluña} --
+  \href{https://fme.upc.edu}{FME}}
+{Septiembre 2016 -- Presente}{Barcelona, Cataluña}
+\begin{itemize}
+  \item Cursando 4º curso actualmente.
+\end{itemize}
+Robusta base teórica matemática y sólidos conocimientos en sus aplicaciones
+(algoritmos, computación).
+
+\divider
+
+\cvevent{\href{https://www.upc.edu/es/grados/ingenieria-en-tecnologias-industriales-barcelona-etseib}
+  {Grado en Ingeniería en Tecnologías Industriales} \hfill \small{240
+    \href{https://es.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System}
+    {ECTS}}}
+{\href{https://upc.edu}{Universidad Politécnica de Cataluña} --
+\href{https://etseib.upc.edu}{ETSEIB}}
+{Septiembre 2016 -- Presente}{Barcelona, Cataluña}
+\begin{itemize}
+  \item Cursando 4º curso actualmente.
+\end{itemize}
+Visión multidisciplinar e integradora de las ingenierías industriales.
+Adquiridos conocimientos y habilidades imprescindibles para el desarrollo
+tecnológico futuro.
+
+\divider
+
+\cvevent{Scientific and Technological Baccalaureate \hfill \small{2 years}}
+{\href{https://www.irabia-izaga.org}{Irabia-Izaga school}}
+{Septiembre 2014 -- June 2016}{Burlada, Navarra}
+\begin{itemize}
+  \item Final grade: 9,47/10.
+  \item University access exam grade
+  (\href{https://en.wikipedia.org/wiki/Selectividad}{\textit{Selectividad}}):
+  12,76/14.
+\end{itemize}
+
+\divider
+
+\cvevent{Compulsory Secondary Education \hfill \small{4 years}}
+{\href{https://www.irabia-izaga.org}{Irabia-Izaga school}}
+{Septiembre 2010 -- June 2014}{Burlada, Navarra}
+
+\medskip
+\cvsection{Courses}
+
+\cvevent{\href{https://es.wikipedia.org/wiki/Teoría_de_juegos}
+  {Game theory}
+  \hfill \small{20 hours}}{\href{https://upc.edu}
+  {Universidad Politécnica de Cataluña} -- \href{https://cfis.upc.edu}{CFIS}}
+{April 2019}{Barcelona, Cataluña}
+Game theory is the study of mathematical models of strategic interaction among
+rational decision-makers. It has applications in fields such as economics, logic
+and computer science.
+
+\vspace{.1cm}
+\divider
+\vspace{.15cm}
+
+\cvevent{\href{https://sites.google.com/view/dlcfis2019/home}
+  {Introduction to Machine Learning \& Deep Learning}
+  \hfill \small{20 hours}}
+{\href{https://upc.edu}{Universidad Politécnica de Cataluña} --
+  \href{https://cfis.upc.edu}{CFIS}}
+{January 2019}{Barcelona, Cataluña}
+\begin{itemize}
+  \item Basic principles of machine learning and classical methods.
+  \item Introduction to deep learning from both an algorithmic and computational
+  point of view.
+  \item Study of its applications to reinforced learning and the analysis of
+  multimedia content.
+\end{itemize}
+
+
+\clearpage
+
+\cvsection[page2sidebar_es]{Projects}
+
+\cvevent{\href{https://driverless.upc.edu}{Driverless -- Motorsport}
+  \hfill \small{20 hours/week}}
+{\href{https://upc.edu}{Universidad Politécnica de Cataluña} --
+\href{https://etseib.upc.edu}{ETSEIB}}
+{Septiembre 2019 - Presente}{}
+I'm part of the Perception section of Driverless UPC team, which is a team
+formed by undergraduate engineers in charge of the designing, manufacturing and
+testing of a fully autonomous car that will participate in national and
+international competitions between universities.
+
+\divider
+
+\cvevent{\href{https://alvarezrosa.com/tres-en-raya}{Robotic Arm -- Tic-tac-toe}
+  \hfill \small{75 hours}}
+{\href{https://upc.edu}{Universidad Politécnica de Cataluña} --
+\href{https://etseib.upc.edu}{ETSEIB}}
+{January 2019 - June 2019}{}
+Creation of a virtual animation of a robotic arm intelligently playing the game
+of Tic-tac-toe.
+
+\divider
+
+\cvevent{Email server \hfill \small{15 hours}}
+{Personal project}{August 2018 - Septiembre 2018}{}
+\begin{itemize}
+  \item Configuration of a modern and secure personal email server based on
+  free software (\href{http://www.postfix.org/}{Postfix} and
+  \href{https://www.dovecot.org/}{Dovecot}).
+  \item Supports opportunistic
+  \href{https://en.wikipedia.org/wiki/Transport_Layer_Security}{TLS} and
+  \href{https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol}
+  {IMAP} access.
+\end{itemize}
+
+\divider
+
+\cvevent{\href{http://david.alvarezrosa.com:5000}{Study Schedule}
+  \hfill \small{60 hours}}
+{\href{https://upc.edu}{Polytechnic University of Cataluña} --
+\href{https://etseib.upc.edu}{ETSEIB}}
+{January 2018 - June 2018}{}
+Creation of a customized study schedule generator adapted to students, through
+data analysis.
+
+
+\medskip
+
+\cvsection{Interests}
+
+\wheelchart{1.5cm}{0.5cm}{%
+  6/8em/accent!30/Family and \\ friends,
+  3/8em/accent!40/Automation,
+  8/8em/accent!60/Robotics,
+  2/10em/accent/Sport,
+  5/6em/accent!20/Data analysis
+}
+
+\end{document}
