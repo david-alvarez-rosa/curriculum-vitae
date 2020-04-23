@@ -15,16 +15,16 @@ LaTeX CV/Résumé class, created by LianTze Lim <[[mailto:liantze@gmail.com][lia
 ** English version
 Here is the compiled pdf version of my CV: [[file:Curriculum_en.pdf][Curriculum Vitae English version]].
 *** Screenshots
-#+HTML: <img src="img/Curriculum_en1.png" width="100%" />
-#+HTML: <img src="img/Curriculum_en2.png" width="100%" />
+#+HTML: <img src="img/Curriculum Vitae English 1.png" width="100%" />
+#+HTML: <img src="img/Curriculum Vitae English 2.png" width="100%" />
 
 
 ** Spanish version
 Here is the compiled pdf version of my CV: [[file:Curriculum_es.pdf][Curriculum Vitae Spanish version]].
 
 *** Screenshots
-#+HTML: <img src="img/Curriculum_es1.png" width="100%" style="border: 1px solid black; "/>
-#+HTML: <img src="img/Curriculum_es2.png" width="100%" />
+#+HTML: <img src="img/Curriculum Vitae Spanish 1.png" width="100%" style="border: 1px solid black; "/>
+#+HTML: <img src="img/Curriculum Vitae Spanish 2.png" width="100%" />
 
 
 ** Author ✒️
