@@ -1,5 +1,5 @@
 \PassOptionsToPackage{dvipsnames}{xcolor}
-\documentclass[10pt, a4paper, ragged2e]{../altacv}
+\documentclass[10pt, a4paper, ragged2e]{altacv}
 
 \geometry{
   left = 1cm,
@@ -40,7 +40,7 @@
       \ifstrequal{#1}{remote}{\faLaptop}{\faMapMarker}%
       \hspace{0.5em}#2%
     }}%
-  }\par\smallskip%
+  }{\small\par\medskip}%
 }
 
 \newcommand{\fhref}[2]{\href{#1://#2}{#2}}
@@ -132,7 +132,7 @@
 
 \name{\href{https://david.alvarezrosa.com/}{David Álvarez Rosa}}
 \tagline{Mathematics and Industrial Technology Engineering graduate\vspace{.05cm}}
-\photo{2.75cm}{../photo}
+\photo{2.75cm}{img/photo}
 \personalinfo{%
   \email{\href{mailto:david@alvarezrosa.com}{\hspace{.025cm}david@alvarezrosa.com}}
   \phone{\href{tel:+34647133930}{+34 647 13 39 30 \hspace{.65mm}}}
@@ -151,7 +151,7 @@
 \end{fullwidth}
 
 
-\cvsection[page1sidebar]{Experience}{\faBriefcase}
+\cvsection[sidebar/page1]{Experience}{\faBriefcase}
 
 \position{Visiting Researcher}{Full Time -- 10 months}%
 \institution{\href{https://vectorinstitute.ai/}{Vector Institute}}%
@@ -248,7 +248,7 @@ Finished with honors obtaining 12.76/14 on University Access Exam.
 \clearpage
 
 
-\cvsection[page2sidebar]{Courses}{\faBook}
+\cvsection[sidebar/page2]{Courses}{\faBook}
 
 \position{%
   \href{https://www.edx.org/course/blockchain-and-fintech-basics-applications-and-lim}%
