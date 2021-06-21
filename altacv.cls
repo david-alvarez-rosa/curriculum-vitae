@@ -146,7 +146,7 @@
 \newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{#1}}
 \newcommand{\github}[1]{\printinfo{\githubsymbol}{#1}}
 \newcommand{\orcid}[1]{\printinfo{\orcidsymbol}{#1}}
-\newcommand{\location}[1]{\printinfo{\locationsymbol}{#1}}
+\newcommand{\home}[1]{\printinfo{\locationsymbol}{#1}}
 
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
 
@@ -193,8 +193,16 @@
   \textbf{\color{accent}#2}\par
   \smallskip}
   \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#3}}}%
-  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#4}}}\par
+  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][r]{\faMapMarker\hspace{0.5em}#4}}}\par
   \medskip\normalsize
+}
+
+\newcommand{\cveventshort}[3]{%
+  {\large\color{emphasis}#1\par}
+  \smallskip\normalsize
+  \textbf{\color{accent}#2}\hfill\small\faCalendar\hspace{0.5em}#3\par
+  \smallskip
+  \normalsize
 }
 
 \newcommand{\cvachievement}[3]{%
@@ -303,5 +311,5 @@
 \AtBeginDocument{%
   \pagestyle{empty}
   \color{body}
-  \raggedright
+  % \raggedright
 }

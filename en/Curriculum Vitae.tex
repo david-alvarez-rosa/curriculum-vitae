@@ -1,14 +1,77 @@
 \PassOptionsToPackage{dvipsnames}{xcolor}
 \documentclass[10pt, a4paper, ragged2e]{../altacv}
 
-\geometry{left = 1cm, right = 9cm, marginparwidth = 6.8cm, marginparsep = 1.2cm,
-  top = 1.25cm, bottom = 1.25cm}
+\geometry{
+  left = 1cm,
+  right = 9cm,
+  marginparwidth = 6.8cm,
+  marginparsep = 1.2cm,
+  top = 1.25cm,
+  bottom = 1.25cm
+}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[default]{lato}
-\usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks, breaklinks]{hyperref}
 \usepackage{changepage}
+\usepackage{microtype}
+
+\renewenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}}{\end{minipage}}
+
+
+\newcommand{\position}[2]{%
+  {\color{emphasis}%
+    {\large{#1}}\hfill{\raisebox{1pt}{\small{#2}}}\par%
+  }%
+}
+\newcommand{\institution}[1]{\smallskip{\bfseries\color{accent}#1\par}}
+\newcommand{\duration}[1]{%
+  \smallskip{\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#1}}%
+}
+\newcommand{\institutionShort}[1]{\smallskip{\bfseries\color{accent}#1}}
+\newcommand{\durationShort}[1]{%
+  \hfill{\small\faCalendar\hspace{0.5em}#1\par\medskip}%
+}
+
+\newcommand{\location}[2][]{%
+  \ifstrequal{#2}{}{}{%
+    {\small\makebox[0.5\linewidth][r]{%
+      \ifstrequal{#1}{remote}{\faLaptop}{\faMapMarker}%
+      \hspace{0.5em}#2%
+    }}%
+  }\par\smallskip%
+}
+
+\newcommand{\fhref}[2]{\href{#1://#2}{#2}}
+
+\renewcommand{\divider}[1][]{%
+  \ifstrequal{#1}{empty}{\vspace{-4pt}}{}%
+  \par\vspace{-.333ex}%
+  \textcolor{body!37.5}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip%
+}
+
+
+\renewcommand{\cvachievement}[3]{%
+  \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\arraybackslash}X@{}}
+    \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
+    & #3
+  \end{tabularx}%
+  \vspace{6pt}%
+}
+
+\renewcommand{\cvevent}[6][]{%
+  {\large\color{emphasis}#2\hfill\small{#3}\par}
+  \smallskip\normalsize
+  \textbf{\color{accent}#4}\par
+  \smallskip\small
+  \makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#5}%
+  \makebox[0.5\linewidth][r]{%
+    \ifstrequal{#1}{remote}{\faLaptop}{\faMapMarker}%
+    \hspace{0.5em}#6%
+  }\par
+  \medskip\normalsize
+}
 
 
 \definecolor{Mulberry}{HTML}{72243D}
@@ -18,6 +81,14 @@
 \colorlet{accent}{Mulberry}
 \colorlet{emphasis}{SlateGrey}
 \colorlet{body}{LightGrey}
+
+\hypersetup{
+  pdftitle = {CV - David Álvarez Rosa},
+  pdfauthor = {David Álvarez Rosa},
+  pdfsubject = {Curriculum Vitae},
+  pdfkeywords = {Curriculum Vitae, Curriculum, Resume, Portfolio, David, David
+    Álvarez, David Álvarez Rosa}
+}
 
 
 \newcommand{\grade}[1]{%
@@ -36,20 +107,36 @@
 }
 
 \renewcommand{\cvskill}[2]{%
-  \textcolor{emphasis}{\textbf{#1}}\hfill
-  \grade{#2}\par
+  \vspace{-4pt}%
+  \textcolor{emphasis}{\textbf{#1}}\hfill%
+  \grade{#2}\par%
+}
+
+\renewcommand{\cvsection}[3][]{%
+  \bigskip%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\input{#1}}}%
+  {\color{heading}\LARGE\bfseries\MakeUppercase{#2}\hfill\Large{#3}}\\[-1ex]%
+  {\color{heading}\rule{\linewidth}{2pt}\par}\medskip
+}
+
+\renewcommand{\cveventshort}[4]{%
+  {\large\color{emphasis}#1\hfill\small{#2}\par}
+  \smallskip\normalsize
+  \textbf{\color{accent}#3}\hfill\small\faCalendar\hspace{0.5em}#4\par
+  \smallskip
+  \normalsize
 }
 
 
 \begin{document}
 
-\name{David Álvarez Rosa}
-\tagline{Mathematics and Industrial Engineering student \vspace{.05cm}}
+\name{\href{https://david.alvarezrosa.com/}{David Álvarez Rosa}}
+\tagline{Mathematics and Industrial Technology Engineering graduate\vspace{.05cm}}
 \photo{2.75cm}{../photo}
 \personalinfo{%
   \email{\href{mailto:david@alvarezrosa.com}{\hspace{.025cm}david@alvarezrosa.com}}
   \phone{\href{tel:+34647133930}{+34 647 13 39 30 \hspace{.65mm}}}
-  \location{\href{https://es.wikipedia.org/wiki/Olaz}{\hspace{.75mm}Olaz, Navarre}\hspace{5.85mm}}
+  \home{\href{https://es.wikipedia.org/wiki/Olaz}{\hspace{.75mm}Olaz, Navarre}\hspace{5.85mm}}
   \printinfo{\faGitlab}{\href{https://gitlab.com/david-alvarez-rosa/}
     {david-alvarez-rosa}}
   \homepage{\href{https://david.alvarezrosa.com}{david.alvarezrosa.com \hspace{.085cm}}}
@@ -60,156 +147,266 @@
 }
 
 \begin{fullwidth}
-  \makecvheader
+  \makecvheader{}
 \end{fullwidth}
 
-\medskip
-\cvsection[page1sidebar]{Education \hfill \Large \faGraduationCap}
 
-\cvevent{\href{https://www.upc.edu/en/bachelors/mathematics-barcelona-fme}
-  {Degree in Mathematics} \hfill \small{240
-    \href{https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System}
-    {ECTS}}}
-{\href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
-  \href{https://fme.upc.edu/en}{FME}}
-{September 2016 -- Present}{Barcelona, Catalonia}
-\begin{itemize}
-  \item Relevant \textbf{subjects}: Linear Algebra, Calculus, Mathematical
-  Programming, Algorithmics, Abstract Algebra, Geometry, Analysis, Differential
-  Equations, Probability and Statistics.
-\end{itemize}
+\cvsection[page1sidebar]{Experience}{\faBriefcase}
+
+\position{Visiting Researcher}{Full Time -- 10 months}%
+\institution{\href{https://vectorinstitute.ai/}{Vector Institute}}%
+\duration{September 2020 -- June 2021}%
+\location[remote]{Toronto, Ontario}%
+During my research thesis at the University of Toronto, I was admitted in
+Vector Institute, which allowed me to experience the world of research
+first-hand using their exceptional high-performance computing resources with
+the technical support of its great human team.%
+\divider{}
+
+
+\position{%
+  \href{https://gitlab.com/david-alvarez-rosa/lidar-compensation}{Perception
+    Engineer (LiDAR)} }{20 hours/week -- 6 months%
+}%
+\institution{\href{https://driverless.upc.edu/}{Driverless UPC -- School of
+    Engineering Motorsport}}%
+\duration{September 2019 -- February 2020}%
+\location{Barcelona, Catalonia}%
+I have been part of the Perception section of Driverless UPC team, formed by
+undergraduate engineers in charge of the designing, manufacturing and testing
+of a fully \textbf{autonomous} car.
+
+
+\medskip
+\cvsection{Education}{\faGraduationCap}
+
+\position{%
+  \href{http://portal.uned.es/portal/page?_pageid=93,71396234&_dad=portal&_schema=PORTAL&idTitulacion=215201}
+  {MSc in Advanced Mathematics}%
+}{GPA Unknown}%
+\institution{%
+  \href{https://www.uned.es}{National University of Distance Education} --
+  \href{https://www.uned.es/universidad/facultades/ciencias.html}{Faculty of
+    Sciences}%
+}%
+\duration{September 2021 -- June 2023}%
+\location{Madrid, Madrid}%
+Math-lover part-time student. Official study program focused on research and
+enabling PhD.%
+\divider{}
+
+\position{%
+  \href{https://recomprehension.com}{Bachelor's Thesis\footnotemark[1]}%
+}{GPA 10/10 (A+)}%
+\institution{%
+  \href{https://www.utoronto.ca/}{University of Toronto} --
+  \href{https://web.cs.toronto.edu/}{Dept. of Computer Science}%
+}%
+\duration{September 2020 -- June 2021}%
+\location[remote]{Toronto, Ontario}%
+Conducted research on Artificial Intelligence for my senior Bachelor's Thesis
+at the Computer Science department of the University of Toronto under the
+supervision of Prof.\ \href{https://www.cs.utoronto.ca/~fidler/}{Fidler} and
+Prof.\ \href{https://imatge.upc.edu/web/people/xavier-giro}{Giró}.%
+\divider{}
+
+\position{%
+  \href{https://www.upc.edu/en/bachelors/mathematics-barcelona-fme}%
+  {BSc in Mathematics}%
+}{GPA 8.12/10}%
+\institution{%
+  \href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
+  \href{https://fme.upc.edu/en}{Faculty of Mathematics}%
+}%
+\duration{September 2016 -- June 2021}%
+\location{Barcelona, Catalonia}%
 A rigorous and proof-oriented course with a robust mathematical base, providing
-a solid knowledge in its applications (algorithms, computing).
+a solid knowledge in its applications (algorithms, computing).%
+\divider{}
 
-\divider
-
-\cvevent{\href{https://www.upc.edu/en/bachelors/industrial-technology-engineering-barcelona-etseib}
-  {Degree in Industrial Technology Engineering} \hfill \small{240
-    \href{https://en.wikipedia.org/wiki/European_Credit_Transfer_and_Accumulation_System}
-    {ECTS}}}
-{\href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
-\href{https://etseib.upc.edu/en}{ETSEIB}}
-{September 2016 -- Present}{Barcelona, Catalonia}
-\begin{itemize}
-  \item Relevant \textbf{subjects}: Mechanics, Thermodynamics, Electromagnetism,
-  Electrotechnics, Fluid Mechanics, Materials and Electronics.
-\end{itemize}
+\position{%
+  \href{https://www.upc.edu/en/bachelors/industrial-technology-engineering-barcelona-etseib}
+  {BEng in Industrial Technology Engineering}%
+}{GPA 8.03/10}%
+\institution{%
+  \href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
+  \href{https://etseib.upc.edu/en}{School of Engineering}%
+}%
+\duration{September 2016 -- June 2021}%
+\location{Barcelona, Catalonia}%
 Multidisciplinary and integrative vision of industrial engineering. Acquired
-knowledge and skills essential for future technological development.
+knowledge and skills essential for future technological development.%
+\divider{}
 
-\divider
-
-\cvevent{Scientific and Technological Baccalaureate \hfill \small{2 years}}
-{\href{https://www.irabia-izaga.org}{Irabia-Izaga school}}
-{September 2014 -- June 2016}{Burlada, Navarre}
-\begin{itemize}
-  \item Final grade: 9.47/10.
-  \item University access exam grade
-  (\href{https://en.wikipedia.org/wiki/Selectividad}{\textit{Selectividad}}):
-  12.76/14.
-\end{itemize}
-
-\divider
-
-\cvevent{Compulsory Secondary Education \hfill \small{4 years}}
-{\href{https://www.irabia-izaga.org}{Irabia-Izaga school}}
-{September 2010 -- June 2014}{Burlada, Navarre}
-
-\medskip
-\cvsection{Courses \hfill \Large \faBook}
-
-\cvevent{\href{https://en.wikipedia.org/wiki/Game_theory}
-  {Mathematical Game Theory}
-  \hfill \small{20 hours}}{\href{https://www.upc.edu/en}
-  {Polytechnic University of Catalonia} -- \href{https://cfis.upc.edu}{CFIS}}
-{April 2019}{Barcelona, Catalonia}
-Game theory is the study of \textbf{mathematical models} of strategic
-interaction among \textbf{rational} decision-makers. It has applications in
-fields such as economics, logic and computer science.
-
-\vspace{.1cm}
-\divider
-\vspace{.15cm}
-
-\cvevent{\href{https://sites.google.com/view/dlcfis2019/home}
-  {Machine Learning \& Deep Learning\footnotemark}
-  \hfill \small{20 hours}}
-{\href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
-  \href{https://cfis.upc.edu}{CFIS}}
-{January 2019}{Barcelona, Catalonia}
-\begin{itemize}
-  \item Basic principles of machine learning and classical methods.
-  \item Introduction to deep learning from both an algorithmic and computational
-  point of view.
-  \item Study of its applications to reinforced learning and the analysis of
-  multimedia content.
-\end{itemize}
+\position{Scientific and Technological Baccalaureate}{GPA 9.47/10}%
+\institution{\href{https://www.irabia-izaga.org}{Irabia-Izaga School}}%
+\duration{September 2014 -- June 2016}%
+\location{Burlada, Navarre}%
+Finished with honors obtaining 12.76/14 on University Access Exam.
 
 
 \clearpage
 
-\cvsection[page2sidebar]{Projects \hfill \Large \faCogs}
 
-\cvevent{\href{https://driverless.upc.edu}{Driverless -- Motorsport}
-  \hfill \small{20 hours/week -- 6 months}}
-{\href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
-\href{https://etseib.upc.edu/en}{ETSEIB}}
-{September 2019 - February 2020}{}
-I have been part of the \textbf{Perception} section of Driverless UPC team,
-which is a team formed by undergraduate engineers in charge of the designing,
-manufacturing and testing of a \textbf{fully autonomous} car that will
-participate in national and international competitions between universities.
+\cvsection[page2sidebar]{Courses}{\faBook}
 
-\divider
+\position{%
+  \href{https://www.edx.org/course/blockchain-and-fintech-basics-applications-and-lim}%
+  {Blockchain \& Financial Technology}%
+}{24 hours}%
+\institutionShort{\href{https://hku.hk/}{The University of Hong Kong}}
+\durationShort{June 2021 -- Present}
+\divider[empty]{}
 
-\cvevent{\href{https://david.alvarezrosa.com/tres-en-raya}{Robotic Arm -- Tic Tac
-    Toe\footnotemark}
-  \hfill \small{75 hours}}
-{\href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
-\href{https://etseib.upc.edu/en}{ETSEIB}}
-{January 2019 - June 2019}{}
-Creation of virtual animation of a \textbf{robotic arm} able to play the Tic
-Tac Toe game and \textbf{never lose}. The source code of this project can be
-found in my \href{https://gitlab.com/david-alvarez-rosa/}{personal Gitlab
-  page\footnotemark}.
+\position{%
+  \href{https://www.deeplearning.ai/deep-learning-specialization/}%
+  {Deep Learning Specialization}%
+}{80 hours}%
+\institutionShort{\href{https://www.deeplearning.ai/}{deeplearning.ai}}
+\durationShort{June 2021 -- Present}
+\divider[empty]{}
 
-\divider
+\position{%
+  \href{http://cs231n.stanford.edu/}{CNNs for Visual Recognition}\footnotemark[2]%
+}{10-week course}%
+\institutionShort{\href{https://www.stanford.edu/}{Stanford University}}%
+\durationShort{October 2020 - December 2020}%
+Completed all coursework.%
+\divider{}
 
-\cvevent{Email server \hfill \small{15 hours}}
-{Personal project}{August 2018 - September 2018}{}
-\begin{itemize}
-  \item Configuration of a modern, secure personal email server based on
-  free software (\href{http://www.postfix.org/}{Postfix} and
-  \href{https://www.dovecot.org/}{Dovecot}).
-  \item Supports opportunistic
-  \href{https://en.wikipedia.org/wiki/Transport_Layer_Security}{TLS} and
-  \href{https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol}
-  {IMAP} access.
-\end{itemize}
+\position{%
+  \href{https://www.coursera.org/account/accomplishments/certificate/CV6ND58V5Q4A}%
+  {Machine Learning}%
+}{60 hours}%
+\institutionShort{%
+  \href{https://www.stanford.edu/}{Stanford University} --
+  \href{https://www.coursera.org/}{Coursera}%
+}%
+\durationShort{August 2020 -- October 2020}%
+\divider[empty]{}
 
-\divider
+\position{%
+  \href{https://en.wikipedia.org/wiki/Game_theory}{Mathematical Game Theory}
+}{20 hours}%
+\institutionShort{%
+  \href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
+  \href{https://cfis.upc.edu}{CFIS}%
+}%
+\durationShort{April 2019}%
+Game theory is the study of \textbf{mathematical models} of strategic
+interaction among \textbf{rational} decision-makers.%
+\divider{}
 
-\cvevent{\href{http://david.alvarezrosa.com:5000}{Study Schedule\footnotemark}
-  \hfill \small{60 hours}}
-{\href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
-\href{https://etseib.upc.edu/en}{ETSEIB}}
-{January 2018 - June 2018}{}
-Creation of a customized study schedule generator adapted to students, through
-\textbf{data analysis}: clustering/k-nearest-neighbours. In particular, based on
-past grades, desired performance and schedule restrictions we were able to
-create the best study schedule possible to \textbf{maximize} user
-\textbf{performance}.
+\position{%
+  \href{https://sites.google.com/view/dlcfis2019/home}%
+  {Machine Learning \& Deep Learning\footnotemark[3]}
+}{20 hours}%
+\institutionShort{%
+  \href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
+  \href{https://cfis.upc.edu}{CFIS}%
+}%
+\durationShort{January 2019}
+
+
+\medskip
+\cvsection{Projects}{\faCogs}
+
+\position{%
+  \href{https://gitlab.com/david-alvarez-rosa/neural-network}%
+  {Neural Network Implementation}\footnotemark[4]%
+}{25 hours}%
+\institutionShort{Personal Project}%
+\durationShort{September 2019 -- Present}%
+\divider[empty]{}
+
+\position{%
+  \href{https://david.alvarezrosa.com/tres-en-raya}%
+  {Robotic Arm -- Tic Tac Toe}\footnotemark[5]%
+}{75 hours}%
+\institution{%
+  \href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
+  \href{https://etseib.upc.edu/en}{School of Engineering}%
+}%
+\duration{January 2019 -- June 2019}%
+\location{}%
+Virtual animation of robotic arm able to play TicTacToe and \textbf{never}
+lose.%
+\divider{}
+
+\position{%
+  \href{https://gitlab.com/david-alvarez-rosa/simplex-algorithm}
+  {Simplex Algorithm in C++}\footnotemark[6]%
+}{15 hours}%
+\institution{%
+  \href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
+  \href{https://fme.upc.edu/en}{Faculty of Mathematics}%
+}%
+\duration{October 2018 -- December 2018}%
+\location{}%
+\divider[empty]{}
+
+\position{%
+  \href{https://david.alvarezrosa.com}{Personal Website} \& Private Email
+  Server%
+}{50 hours}%
+\institutionShort{Personal Project}%
+\durationShort{August 2018 -- Present}%
+Website design and configuration of email server.  \divider{}
+
+\position{%
+  \href{http://david.alvarezrosa.com:5000}{Study Schedule}\footnotemark[7]%
+}{60 hours}%
+\institution{%
+  \href{https://www.upc.edu/en}{Polytechnic University of Catalonia} --
+  \href{https://etseib.upc.edu/en}{School of Engineering}%
+}%
+\duration{January 2018 -- June 2018}%
+\location{}%
+Study schedule generator adapted to student (data analysis).
+
 
 \medskip
 
-\cvsection{Interests \hfill \Large \faSearch}
+\begin{fullwidth}
+  \cvsection{Interests \& Personal Statement}{\faSearch}
 
-\wheelchart{1.5cm}{0.5cm}{%
-  6/8em/accent!30/Family and \\ friends,
-  3/8em/accent!40/Automation,
-  8/8em/accent!60/Robotics,
-  2/10em/accent/Sport,
-  5/6em/accent!20/Data analysis
-}
+  \begin{minipage}{12cm}
+    Created a study schedule generator adapted to students, through
+    \textbf{data analysis}: clustering/k-nearest-neighbours. Based on past
+    grades, desired performance and schedule restrictions we were able to
+    create the best study schedule possible to \textbf{maximize} user
+    \textbf{performance}.  Created a study schedule generator adapted to
+    students, through \textbf{data analysis}:
+    clustering/k-nearest-neighbours. Based on past grades, desired performance
+    and schedule restrictions we were able to create the best study schedule
+    possible to \textbf{maximize} user \textbf{performance}.
+  \end{minipage}\hspace{-1.4cm}
+  \begin{minipage}{0pt}
+    \wheelchart{1.5cm}{0.5cm}{%
+      6/8em/accent!30/Family and \\ friends,
+      3/8em/accent!40/Robotics,
+      8/8em/accent!60/Artificial \\ intelligence,
+      2/10em/accent/Sport,
+      5/6em/accent!20/Data \\ analysis
+    }
+  \end{minipage}
+\end{fullwidth}
+
 
 \end{document}
+
+
+Ambitious, hardworking, extrovert, open-minded and reliable leader, with a lot
+of initiative and a great capacity to work in group.
+
+Because of my active personality, I have participated in a lot of
+extracurricular activities to complement my education, such as voluntary work,
+projects and courses.
+
+and received grants from the Spanish Ministry of Education. This wide variety
+of scholarships and programs in which I have been immersed make me approach
+situations from multiple points of view. Thanks to this ability, I have
+developed a good range of personal projects. Some of them have improving
+people’s lives around me as a target: HowAreYouTweeting and WearAMask are some
+of the examples. For more information about them and other personal projects,
+please check the details in the sections below.
