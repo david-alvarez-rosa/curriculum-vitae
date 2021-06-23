@@ -12,8 +12,8 @@ The LaTeX source code of my personal Curriculum Vitae, view compiled PDF here:
 [[https://david.alvarezrosa.com/pdf/cv-david-alvarez-rosa.pdf][CV - David Álvarez Rosa]].
 
 ** Screenshots
-#+HTML: <img src="https://david.alvarezrosa.com/img/cv-1.png" width="100%" />
-#+HTML: <img src="https://david.alvarezrosa.com/img/cv-2.png" width="100%" />
+#+HTML: <img src="https://david.alvarezrosa.com/img/cv-1.jpg" width="100%" />
+#+HTML: <img src="https://david.alvarezrosa.com/img/cv-2.jpg" width="100%" />
 
 ** Author ✒️
 [[https://david.alvarezrosa.com/][David Álvarez Rosa]]
