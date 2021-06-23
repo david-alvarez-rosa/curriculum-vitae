@@ -116,7 +116,10 @@
 \RequirePackage{changepage}
 % \RequirePackage{marginfix}
 
+\newlength\tindent
+\setlength{\tindent}{\parindent}
 \setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
 \newcommand{\divider}{\textcolor{body!37.5}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
 
 \newenvironment{fullwidth}{%

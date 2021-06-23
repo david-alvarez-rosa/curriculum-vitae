@@ -8,24 +8,12 @@
 
 * Curriculum Vitae 📄
 
-The LaTeX source code of my personal Curriculum Vitae. I have use and modified
-the [[https://github.com/liantze/AltaCV][AltaCV]] LaTeX CV/Résumé class, created by LianTze Lim <[[mailto:liantze@gmail.com][liantze@gmail.com]]>.
+The LaTeX source code of my personal Curriculum Vitae, view compiled PDF here:
+[[https://david.alvarezrosa.com/pdf/cv-david-alvarez-rosa.pdf][CV - David Álvarez Rosa]].
 
-
-** English version
-Here is the compiled pdf version of my CV: [[file:en/Curriculum%20Vitae.pdf][Curriculum Vitae English version]].
-*** Screenshots
-#+HTML: <img src="img/Curriculum Vitae English 1.png" width="100%" />
-#+HTML: <img src="img/Curriculum Vitae English 2.png" width="100%" />
-
-
-** Spanish version
-Here is the compiled pdf version of my CV: [[file:es/Curriculum%20Vitae.pdf][Curriculum Vitae Spanish version]].
-
-*** Screenshots
-#+HTML: <img src="img/Curriculum Vitae Spanish 1.png" width="100%" style="border: 1px solid black; "/>
-#+HTML: <img src="img/Curriculum Vitae Spanish 2.png" width="100%" />
-
+** Screenshots
+#+HTML: <img src="https://david.alvarezrosa.com/img/cv-1.png" width="100%" />
+#+HTML: <img src="https://david.alvarezrosa.com/img/cv-2.png" width="100%" />
 
 ** Author ✒️
 [[https://david.alvarezrosa.com/][David Álvarez Rosa]]
