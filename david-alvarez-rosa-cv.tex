@@ -1,112 +1,91 @@
 \documentclass[10pt, a4paper]{article}
 
-\usepackage[
-  left=1cm, right=9cm,
-  marginparwidth=6.8cm, marginparsep=1.2cm,
-  top=1.2cm, bottom=1.2cm
-]{geometry}
+\usepackage[left=1cm, right=1cm, top=1.1cm, bottom=1.1cm]{geometry}
 
 \usepackage[T1]{fontenc}
+\usepackage[english]{babel}
 \usepackage[osf, sc]{mathpazo}
-\usepackage[newcommands]{ragged2e}
-\usepackage[final, tracking=true, kerning=true, spacing=true]{microtype}
-\usepackage{textcomp}
+\usepackage[final, protrusion=true, expansion=true, tracking=true, kerning=true]{microtype}
 \usepackage{graphicx}
 \usepackage{pgfornament}
+\usepackage{paracol}
 \usepackage[hidelinks, breaklinks=true]{hyperref}
 
 \hypersetup{
-  pdftitle={CV - David Álvarez Rosa},
-  pdfauthor={David Álvarez Rosa}
+  pdftitle={David Álvarez Rosa - CV},
+  pdfauthor={David Álvarez Rosa},
+  pdflang={en},
 }
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\AtBeginDocument{\RaggedRight}
+
+\setlength{\columnsep}{1.2cm}
+\columnratio{0.618}
+
+\newcommand{\oxfordrule}{%
+  \par\hrule height 1.6pt\relax\vskip 0.8pt\hrule height 0.5pt\relax
+}
 
 \newcommand{\headingrule}[2]{%
   {#1\scshape\MakeLowercase{#2}\\[-0.7ex]}%
   \rule{\linewidth}{0.5pt}\par\vspace{2pt}%
 }
-\newcommand{\cvsection}[1]{\vspace{12pt}\headingrule{\large}{#1}}
+\newcommand{\cvsection}[1]{\vspace{10pt}\headingrule{\large}{#1}}
 \newcommand{\sideheading}[1]{\addvspace{10pt}\headingrule{\normalsize}{#1}}
 
 \newcommand{\lineitem}[2]{%
-  #1---#2\par\addvspace{4pt}%
+  #1---#2\par\addvspace{5pt}%
 }
 \newcommand{\entry}[2]{%
   \textit{#1}\par{\small #2}\par\addvspace{8pt}%
 }
 
 \newcommand{\role}[4]{%
-  {\bfseries #1}\hfill{\small #2}\par
+  {\itshape #1}\hfill{\small #2}\par
   {\small #3}\par\smallskip
-  #4\par\addvspace{9pt}%
+  #4\par\addvspace{11pt}%
 }
 \newcommand{\degree}[3]{%
-  {\bfseries #1}\hfill{\small #2}\par\smallskip
-  #3\par\addvspace{9pt}%
+  {\itshape #1}\hfill{\small #2}\par\smallskip
+  #3\par\addvspace{10pt}%
 }
+
+\newsavebox{\idblock}
+\newlength{\idht}
 
 \begin{document}
 
-\marginpar{\raggedright
-  \vspace*{11pt}%
-  {\centering
-    \begin{tikzpicture}
-      \node[inner sep=0pt] (p) {\includegraphics[width=0.50\linewidth]{portrait.png}};
-      \node[anchor=south, yshift=2pt, inner xsep=2pt, inner ysep=1pt,
-            fill=white, fill opacity=0.7, text opacity=1,
-            font=\footnotesize\itshape] at (p.south) {That's me! March~2022.};
-    \end{tikzpicture}\par}%
-  \sideheading{Certifications}
-  \lineitem{Advanced English (C1)}{Cambridge}
-  \lineitem{Machine Learning}{Stanford University}
-  \lineitem{Deep Learning}{deeplearning.ai}
-  \lineitem{Blockchain}{Hong Kong University}
-  \lineitem{Nova Talent Member}{Nova}
+\oxfordrule
+\vspace{10pt}
 
-  \sideheading{Volunteering}
-  \entry{Mathematics Tutor}{Training for the Mathematical Olympiads.}
-  \entry{Volunteer @ Banco de Alimentos}{Food collection for people in need.}
+\savebox{\idblock}{\begin{minipage}[c]{14.2cm}
+  {\Huge\scshape\textls[40]{\MakeLowercase{David Álvarez Rosa}}\par}
+  \vspace{7pt}
+  {\itshape Software engineer \& mathematician\par}
+  \vspace{8pt}
+  Mathematician and engineer based in sunny Dublin, passionate about
+  low-latency, high-performance systems.\par\addvspace{5pt}
+  Currently in algorithmic trading at Susquehanna; previously building
+  large-scale systems at Amazon, semantic caching for LLMs at Sopra Steria,
+  and quantitative risk analysis at Deloitte.\par
+\end{minipage}}%
+\setlength{\idht}{\dimexpr\ht\idblock+\dp\idblock\relax}%
+\noindent
+\usebox{\idblock}\hfill
+\begin{minipage}[c]{3.8cm}
+  \raggedleft
+  \begin{tikzpicture}
+    \node[inner sep=0pt] (p)
+      {\includegraphics[height=\idht]{portrait.png}};
+    \node[anchor=south, yshift=2pt, inner xsep=2pt, inner ysep=1pt,
+          fill=white, fill opacity=0.7, text opacity=1,
+          font=\footnotesize\itshape] at (p.south) {March~2022.};
+  \end{tikzpicture}%
+\end{minipage}\par
+\vspace{6pt}
 
-  \sideheading{Honors \& Awards}
-  \entry{Mathematical Olympiad}{Silver (local), honors (national).}
-  \entry{Physics Olympiad}{Gold (local), silver (national).}
-  \entry{Mobility Scholarship}{Research thesis at Toronto (\texteuro{}6k).}
-  \entry{Tuition and Housing Scholarship}{University tuition and housing (\texteuro{}19k).}
-  \entry{General Scholarship}{Full tuition plus annual stipend (\texteuro{}11k).}
-
-  \sideheading{Languages}
-  \lineitem{English}{Proficient}
-  \lineitem{Spanish}{Native}
-  \lineitem{Catalan}{Intermediate}
-
-  \sideheading{Contact}
-  \lineitem{Website}{\href{https://david.alvarezrosa.com}{david.alvarezrosa.com}}
-  \lineitem{Email}{\href{mailto:david@alvarezrosa.com}{david@alvarezrosa.com}}
-  \lineitem{LinkedIn}{\href{https://www.linkedin.com/in/david-alvarez-rosa/}{david-alvarez-rosa}}
-  \lineitem{GitHub}{\href{https://github.com/david-alvarez-rosa}{david-alvarez-rosa}}
-  \lineitem{Phone}{\href{tel:+34647133930}{+34\,647\,133\,930}}
-
-  \par\vspace{22pt}\makebox[\linewidth][c]{\pgfornament[width=2.4cm]{156}}%
-}
-
-
-{\large\itshape Curriculum Vitae}\\[-1.2ex]%
-\rule{\linewidth}{0.6pt}\par%
-\vspace{1pt}%
-{\huge\textbf{\href{https://david.alvarezrosa.com}{DAVID ÁLVAREZ ROSA}}\par}%
-\vspace{10pt}%
-{Mathematician and engineer based in sunny Dublin, passionate about
-  low-latency, high-performance systems.\par}%
-\vspace{6pt}%
-{Currently working in algorithmic trading at Susquehanna; previously at
-  Amazon, Sopra Steria, and Deloitte.\par}%
-\vspace{6pt}%
-{Holds a BSc in Mathematics, a BEng in Industrial Engineering, and an
-  MSc in Artificial Intelligence.\par}%
-\vspace{6pt}%
+\begin{paracol}{2}
 
 \cvsection{Experience}
 
@@ -158,5 +137,41 @@
 \degree{BEng in Industrial Engineering}{8.03/10 (top 2\%)}{%
   Multidisciplinary and integrative vision of industrial engineering.
   Honors in 14 subjects.}
+
+\switchcolumn
+
+\sideheading{Certifications}
+\lineitem{Advanced English (C1)}{Cambridge}
+\lineitem{Machine Learning}{Stanford University}
+\lineitem{Deep Learning}{deeplearning.ai}
+\lineitem{Blockchain}{Hong Kong University}
+\lineitem{Nova Talent Member}{Nova}
+
+\sideheading{Honors \& Awards}
+\entry{Mathematical Olympiad}{Silver (local), honors (national).}
+\entry{Physics Olympiad}{Gold (local), silver (national).}
+\entry{Mobility Scholarship}{Research thesis at Toronto (\texteuro{}6k).}
+\entry{Tuition and Housing Scholarship}{University tuition and housing (\texteuro{}19k).}
+\entry{General Scholarship}{Full tuition plus annual stipend (\texteuro{}11k).}
+
+\sideheading{Volunteering}
+\entry{Mathematics Tutor}{Training for the Mathematical Olympiads.}
+\entry{Volunteer @ Banco de Alimentos}{Food collection for people in need.}
+
+\sideheading{Languages}
+\lineitem{English}{Proficient}
+\lineitem{Spanish}{Native}
+\lineitem{Catalan}{Intermediate}
+
+\sideheading{Contact}
+\lineitem{Website}{\href{https://david.alvarezrosa.com}{david.alvarezrosa.com}}
+\lineitem{Email}{\href{mailto:david@alvarezrosa.com}{david@alvarezrosa.com}}
+\lineitem{LinkedIn}{\href{https://www.linkedin.com/in/david-alvarez-rosa/}{david-alvarez-rosa}}
+\lineitem{GitHub}{\href{https://github.com/david-alvarez-rosa}{david-alvarez-rosa}}
+\lineitem{Phone}{\href{tel:+34647133930}{+34\,647\,133\,930}}
+
+\par\addvspace{20pt}\makebox[\linewidth][c]{\pgfornament[width=2.2cm]{156}}
+
+\end{paracol}
 
 \end{document}
