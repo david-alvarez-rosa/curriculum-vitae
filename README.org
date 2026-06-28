@@ -9,7 +9,7 @@ A single-page, two-column résumé set in Palatino with old-style figures
 and small caps, refined by =microtype= for micro-typographic
 adjustments.
 
-[[./david-alvarez-rosa-cv.jpg]]
+[[./img/david-alvarez-rosa-cv.jpg]]
 
 Compile with =pdflatex= (requires a TeX distribution)
 
