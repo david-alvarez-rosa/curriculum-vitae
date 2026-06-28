@@ -1,19 +1,22 @@
-# -*- ispell-dictionary: "english" -*-
+#+title: Curriculum Vitae
+#+author: David Álvarez Rosa
+#+email: david@alvarezrosa.com
+#+language: en
 
+The LaTeX source code of my personal Curriculum Vitae.
 
-#+AUTHOR: David Álvarez Rosa
-#+EMAIL: david@alvarezrosa.com
-#+STARTUP: showall
+A single-page, two-column résumé set in Palatino with old-style figures
+and small caps, refined by =microtype= for micro-typographic
+adjustments.
 
+[[./david-alvarez-rosa-cv.jpg]]
 
-* Curriculum Vitae 📄
+Compile with =pdflatex= (requires a TeX distribution)
 
-The LaTeX source code of my personal Curriculum Vitae, view compiled PDF here:
-[[https://david.alvarezrosa.com/pdf/cv-david-alvarez-rosa.pdf][CV - David Álvarez Rosa]].
+#+begin_src sh
+pdflatex david-alvarez-rosa-cv.tex
+#+end_src
 
-** Screenshots
-#+HTML: <img src="https://david.alvarezrosa.com/img/cv-1.jpg" width="100%" />
-#+HTML: <img src="https://david.alvarezrosa.com/img/cv-2.jpg" width="100%" />
+#+html: <br />
 
-** Author ✒️
-[[https://david.alvarezrosa.com/][David Álvarez Rosa]]
+With ❤️ by [[https://david.alvarezrosa.com/][David Álvarez Rosa]].
