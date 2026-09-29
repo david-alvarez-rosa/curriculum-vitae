@@ -1,181 +1,186 @@
+\DocumentMetadata{lang=en, pdfversion=1.7, pdfstandard=a-2b}
 \documentclass[10pt, a4paper]{article}
 
-\usepackage[left=1cm, right=1cm, top=1cm, bottom=0.9cm, includefoot, footskip=20pt]{geometry}
+\usepackage[hmargin=1.8cm, top=2.247cm, bottom=1.953cm]{geometry}
 
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage[osf, sc]{mathpazo}
-\usepackage[final, protrusion=true, expansion=true, tracking=true, kerning=true]{microtype}
+\usepackage[tracking=true]{microtype}
+\SetTracking{encoding=*, shape=sc}{60}
 \usepackage{graphicx}
-\usepackage{pgfornament}
+\usepackage{tikz}
 \usepackage{paracol}
-\usepackage{fancyhdr}
-\usepackage{amssymb}
 
-\usepackage[hidelinks, breaklinks=true]{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 \hypersetup{
-  pdftitle={David Álvarez Rosa - CV},
+  pdftitle={David Álvarez Rosa – Curriculum Vitae},
   pdfauthor={David Álvarez Rosa},
-  pdflang={en},
+  pdfsubject={Curriculum vitae of David Álvarez Rosa: low-latency
+    software engineer in high-frequency trading},
+  pdfkeywords={David Álvarez Rosa, curriculum vitae, CV, résumé,
+    software engineer, low latency, high-frequency trading, C++,
+    ISO C++ committee, WG21, mathematics, Dublin},
+  pdfcontactemail={david@alvarezrosa.com},
+  pdfcontacturl={https://david.alvarezrosa.com},
+  pdfcopyright={Copyright © David Álvarez Rosa},
+  pdfdisplaydoctitle=true,
 }
 
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancyfoot[C]{%
-  \scshape
-  \href{https://david.alvarezrosa.com}{\textls[8]{\MakeLowercase{david.alvarezrosa.com}}}%
-}
-\fancyfoot[R]{\scriptsize$\blacksquare$}
+\pagestyle{empty}
 \setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\frenchspacing
 
 \setlength{\columnsep}{1.2cm}
 \columnratio{0.618}
 
-\newcommand{\headingrule}[2]{%
-  {#1\scshape\textls[8]{\MakeLowercase{#2}}\\[-1.0ex]}%
-  \rule{\linewidth}{0.6pt}\par\vspace{3.5pt}%
+\newcommand{\cvsection}[2][16pt plus 2pt]{%
+  \addvspace{#1}%
+  {\large\scshape\MakeLowercase{#2}\\[-1ex]}%
+  \rule{\linewidth}{0.5pt}\par\vspace{3.5pt}%
 }
-\newcommand{\cvsection}[1]{\vspace{10pt}\headingrule{\Large}{#1}}
-\newcommand{\sideheading}[2][14pt]{\addvspace{#1}\headingrule{\large}{#2}}
-
-\newcommand{\cvtitle}[1]{\textls[40]{#1}}
 
 \newcommand{\lineitem}[2]{%
-  #1---#2\par\addvspace{5pt}%
+  #1\hfill{\itshape #2}\par\addvspace{4pt plus 1pt}%
 }
 \newcommand{\entry}[2]{%
-  \cvtitle{#1}\par{\small\itshape #2}\par\addvspace{8pt}%
+  #1\par{\itshape #2}\par\addvspace{7pt plus 1pt}%
 }
 
 \newcommand{\cventry}[4]{%
-  \cvtitle{#1}\hfill{\small #2}\par
+  #1\hfill{\itshape #2}\par
   \if\relax\detokenize{#3}\relax\else{\itshape #3}\par\fi
-  \smallskip
-  #4\par\addvspace{11pt}%
+  \vspace{3pt}
+  #4\par\addvspace{11pt plus 1pt}%
 }
 
+\newcommand{\columnend}{\par\vskip-\lastskip\kern-\prevdepth\vfilneg}
+
 \newcommand{\dotsep}{\textperiodcentered{}}
-\newcommand{\name}[1]{%
-  {\centering\Huge\scshape\href{https://david.alvarezrosa.com}{\textls[12]{\MakeLowercase{#1}}}\par}\vspace{2pt}}
-\newcommand{\tagline}[1]{%
-  {\centering\large\itshape #1\par}\vspace{17pt}}
-\newcommand{\intro}[1]{#1\par}
+
+\newsavebox{\idblock}
+\newlength{\idht}
 
 \begin{document}
 
-\noindent
-\begin{minipage}[b]{14.2cm}
-  {\centering\pgfornament[width=4.5cm]{87}\par}
-  \vspace{6pt}
-  \name{David Álvarez Rosa}
-  \tagline{Mathematician \dotsep{} Engineer \dotsep{} Dublin}
-  \intro{Passionate about low-latency, high-performance
-    systems. Currently in algorithmic trading at Susquehanna; previously
-    at Amazon, Sopra Steria, and Deloitte.  Holds a BSc in Mathematics,
-    a BEng in Industrial Engineering, and an MSc in Artificial
-    Intelligence.}
-\end{minipage}\hfill
+\savebox{\idblock}{%
+  \begin{minipage}[b]{\dimexpr\linewidth-4cm\relax}
+    {\huge\raisebox{0pt}[\fontcharht\font`D]{\textls*[80]{DAVID ÁLVAREZ ROSA}}\par}
+    \vspace{3pt}
+    {\large\itshape Mathematician \dotsep{} Engineer \dotsep{} Dublin\par}
+    \vspace{12pt}
+    Low-latency engineer in high-frequency options trading at
+    Susquehanna. Represents Ireland on the ISO~C++ standards committee.
+    Previously at Amazon. Holds a BSc in Mathematics, a BEng in
+    Industrial Engineering, and an MSc in Artificial Intelligence.
+  \end{minipage}}
+\setlength{\idht}{\ht\idblock}
+
+\usebox{\idblock}\hfill
 \begin{minipage}[b]{3.8cm}
   \raggedleft
-  \begin{tikzpicture}
-    \node[inner sep=0pt] (p)
-      {\includegraphics[height=110pt]{img/portrait.png}};
+  \raisebox{0pt}[\idht][0pt]{\begin{tikzpicture}[baseline={([yshift=0.75pt]p.south)}]
+    \node[inner sep=0pt, outer sep=0pt] (p)
+      {\includegraphics[height=\dimexpr\idht+12pt\relax]{img/portrait.png}};
     \node[anchor=south, yshift=2pt, inner xsep=2pt, inner ysep=1pt,
           fill=white, fill opacity=0.7, text opacity=1,
-          font=\footnotesize\itshape] at (p.south) {March~2022.};
-  \end{tikzpicture}%
+          font=\small\itshape] at (p.south) {March~2022};
+  \end{tikzpicture}}%
 \end{minipage}\par
-\vspace{8pt}
+\vspace{12pt}
 
 \begin{paracol}{2}
 
-\cvsection{Experience}
+\cvsection[10pt]{Experience}
 
 \cventry{Software Engineer}{Jul 2024--Present}{Susquehanna International
-  Group · Dublin, Ireland}{%
+  Group \dotsep{} Dublin, Ireland}{%
   High-frequency options trading. Low-latency market data and trading
-  signals.  Mentor and interviewer.}
+  signals. Mentor and interviewer.}
 
-\cventry{Software Engineer II}{Mar 2022--Aug 2024}{Amazon · Madrid,
+\cventry{Member}{Jul 2026--Present}{ISO C++ Committee (WG21)
+  \dotsep{} Ireland}{%
+  National expert. Representing Ireland.}
+
+\cventry{Software Engineer II}{Mar 2022--Aug 2024}{Amazon \dotsep{} Madrid,
   Spain}{%
   Designed systems for 10M+ monthly active customers. Contributed to
   100+ internal repos. Won org hackathon. Promoted in 18 months (top
-  5\%). Mentored 3. On-call.  Interviewer.}
+  5\%). Mentored 3. On-call. Interviewer.}
 
-\cventry{Machine Learning Engineer}{Apr 2024--Jul 2024}{Sopra Steria ·
+\cventry{Machine Learning Engineer}{Apr 2024--Jul 2024}{Sopra Steria \dotsep{}
   Remote}{%
   Researched, designed, and built a semantic cache for LLMs.}
 
-\cventry{Risk Analyst}{Sep 2021--Mar 2022}{Deloitte · Madrid, Spain}{%
-  Quantitative analysis of technological and cybersecurity risks for
-  top-tier banking companies.}
+\cventry{Risk Analyst}{Sep 2021--Mar 2022}{Deloitte \dotsep{} Madrid, Spain}{%
+  Quantitative analysis of cybersecurity risk for banks.}
 
-\cventry{Visiting Researcher}{Sep 2020--Jun 2021}{Vector Institute ·
-  Toronto, Canada}{%
-  Research thesis on multimodal learning
-  (\href{https://recomprehension.com}{recomprehension.com}).}
+\cventry{Visiting Researcher}{Sep 2020--Jun 2021}{Vector Institute \dotsep{}
+  University of Toronto, Canada}{%
+  Thesis on multimodal learning (10/10, A+)
+  \href{https://recomprehension.com}{recomprehension.com}.}
 
-\cventry{Machine Learning Engineer}{Sep 2019--Feb 2020}{BCN eMotorsport ·
+\cventry{Machine Learning Engineer}{Sep 2019--Feb 2020}{BCN eMotorsport \dotsep{}
   Barcelona, Spain}{%
-  Perception at Driverless UPC.  Served as LiDAR lead and collaborated
-  on computer vision for a fully autonomous car.}
+  LiDAR lead and computer vision for a fully autonomous car.}
 
 \cvsection{Education}
 
-\cventry{MSc in Artificial Intelligence}{9.00/10}{}{%
-  Official study program focused on AI research and enabling PhD.
-  Honors in 6 subjects.}
+\cventry{MSc in Artificial Intelligence}{9.00/10}{International
+  University of La Rioja}{%
+  PhD-qualifying research program. Honors in 6 subjects.}
 
-\cventry{MSc in Mathematics}{}{}{%
+\cventry{MSc in Mathematics}{}{National University of
+  Distance Education}{%
   Math-lover part-time student. Dropout (joined Amazon).}
 
-\cventry{Research Thesis}{10/10 (A+)}{}{%
-  Research thesis on multimodal learning at University of Toronto.}
+\cventry{BSc in Mathematics}{8.12/10 (top 10\%)}{Polytechnic University of
+  Catalonia (CFIS)}{%
+  Rigorous, proof-oriented program. Honors in 9 subjects.}
 
-\cventry{BSc in Mathematics}{8.12/10 (top 10\%)}{}{%
-  Rigorous and proof-oriented degree with a robust mathematical base.
-  Honors in 9 subjects.}
+\cventry{BEng in Industrial Engineering}{8.03/10 (top 2\%)}{Polytechnic University of
+  Catalonia (CFIS)}{%
+  Multidisciplinary engineering program. Honors in 14 subjects.}
 
-\cventry{BEng in Industrial Engineering}{8.03/10 (top 2\%)}{}{%
-  Multidisciplinary and integrative vision of industrial engineering.
-  Honors in 14 subjects.}
-
+\columnend
 \switchcolumn
 
-\sideheading[8.9pt]{Certifications}
+\cvsection[10pt]{Skills}
+C++ \dotsep{} Python \dotsep{} Linux \dotsep{} Performance\par
+
+\cvsection{Certifications}
 \lineitem{Advanced English (C1)}{Cambridge}
 \lineitem{Machine Learning}{Stanford University}
 \lineitem{Deep Learning}{deeplearning.ai}
 \lineitem{Blockchain}{Hong Kong University}
 \lineitem{Nova Talent Member}{Nova}
 
-\sideheading{Honors \& Awards}
+\cvsection{Honors {\ulcshape\itshape\&} Awards}
 \entry{Mathematical Olympiad}{Silver (local), honors (national).}
 \entry{Physics Olympiad}{Gold (local), silver (national).}
 \entry{Mobility Scholarship}{Research thesis at Toronto (\texteuro{}6k).}
 \entry{Tuition and Housing Scholarship}{University tuition and housing (\texteuro{}19k).}
 \entry{General Scholarship}{Full tuition plus annual stipend (\texteuro{}11k).}
 
-\sideheading{Volunteering}
+\cvsection{Volunteering}
 \entry{Mathematics Tutor}{Training for the Mathematical Olympiads.}
-\entry{Volunteer @ Banco de Alimentos}{Food collection for people in need.}
+\entry{Food Bank Volunteer}{Food collection at Banco de Alimentos.}
 
-\sideheading{Languages}
+\cvsection{Languages}
 \lineitem{English}{Proficient}
 \lineitem{Spanish}{Native}
 \lineitem{Catalan}{Intermediate}
 
-\sideheading{Contact}
-\lineitem{Email}{\href{mailto:david@alvarezrosa.com}{david@alvarezrosa.com}}
-\lineitem{LinkedIn}{\href{https://www.linkedin.com/in/david-alvarez-rosa/}{david-alvarez-rosa}}
-\lineitem{GitHub}{\href{https://github.com/david-alvarez-rosa}{david-alvarez-rosa}}
-\lineitem{Phone}{\href{tel:+34647133930}{+34\,647\,133\,930}}
+\cvsection{Contact}
+\lineitem{\href{https://david.alvarezrosa.com}{david.alvarezrosa.com}}{Website}
+\lineitem{\href{mailto:david@alvarezrosa.com}{david@alvarezrosa.com}}{Email}
+\lineitem{\href{tel:+34647133930}{+34\,647\,133\,930}}{Phone}
+\lineitem{\href{https://www.linkedin.com/in/david-alvarez-rosa/}{david-alvarez-rosa}}{LinkedIn}
+\lineitem{\href{https://github.com/david-alvarez-rosa}{david-alvarez-rosa}}{GitHub}
 
-\par\addvspace{22pt}\makebox[\linewidth][c]{\pgfornament[width=2.2cm]{156}}%
-
+\columnend
 \end{paracol}
 
 \end{document}
