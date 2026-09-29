@@ -1,7 +1,7 @@
 \DocumentMetadata{lang=en, pdfversion=1.7, pdfstandard=a-2b}
 \documentclass[10pt, a4paper]{article}
 
-\usepackage[hmargin=1.8cm, top=2.247cm, bottom=1.953cm]{geometry}
+\usepackage[left=51.4pt, right=50.64pt, top=41.61pt, bottom=71.86pt, footskip=34pt]{geometry}
 
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
@@ -10,25 +10,45 @@
 \SetTracking{encoding=*, shape=sc}{60}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{pgfornament}
 \usepackage{paracol}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
 
 \usepackage[hidelinks]{hyperref}
 
 \hypersetup{
-  pdftitle={David Álvarez Rosa – Curriculum Vitae},
+  pdftitle={[x-default]David Álvarez Rosa – Curriculum Vitae},
   pdfauthor={David Álvarez Rosa},
-  pdfsubject={Curriculum vitae of David Álvarez Rosa: low-latency
-    software engineer in high-frequency trading},
-  pdfkeywords={David Álvarez Rosa, curriculum vitae, CV, résumé,
-    software engineer, low latency, high-frequency trading, C++,
-    ISO C++ committee, WG21, mathematics, Dublin},
+  pdfsubject={[x-default]Curriculum Vitae},
   pdfcontactemail={david@alvarezrosa.com},
   pdfcontacturl={https://david.alvarezrosa.com},
-  pdfcopyright={Copyright © David Álvarez Rosa},
+  pdfcopyright={[x-default]Copyright © David Álvarez Rosa},
+  pdfcreator={LaTeX on Arch Linux},
   pdfdisplaydoctitle=true,
 }
 
-\pagestyle{empty}
+\newcommand{\cvkeywords}{C++}
+\ExplSyntaxOn
+\str_set:Ne \l_tmpa_str { \cvkeywords }
+\str_replace_all:Nnn \l_tmpa_str { & } { &amp; }
+\str_replace_all:Nnn \l_tmpa_str { < } { &lt; }
+\exp_args:Ne \pdfmeta_xmp_add:n { <pdf:Keywords> \l_tmpa_str </pdf:Keywords> }
+\exp_args:NNe \str_set_convert:Nnnn \l_tmpa_str { \cvkeywords } { utf8 } { utf16/hex }
+\pdfmanagement_add:nne { Info } { Keywords } { < \l_tmpa_str > }
+\ExplSyntaxOff
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{%
+  \scshape\href{https://david.alvarezrosa.com}{\textls[15]{david.alvarezrosa.com}}%
+}
+\fancyfoot[L]{\itshape\ifcase\month\or January\or February\or March\or
+  April\or May\or June\or July\or August\or September\or October\or
+  November\or December\fi\ \number\year}
+\fancyfoot[R]{\scriptsize$\blacksquare$}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \frenchspacing
@@ -36,24 +56,26 @@
 \setlength{\columnsep}{1.2cm}
 \columnratio{0.618}
 
-\newcommand{\cvsection}[2][16pt plus 2pt]{%
+\newcommand{\cvsection}[2][13pt plus 2pt]{%
   \addvspace{#1}%
   {\large\scshape\MakeLowercase{#2}\\[-1ex]}%
   \rule{\linewidth}{0.5pt}\par\vspace{3.5pt}%
 }
 
+\newcommand{\sidesep}{16.3pt plus 2pt}
+
 \newcommand{\lineitem}[2]{%
   #1\hfill{\itshape #2}\par\addvspace{4pt plus 1pt}%
 }
 \newcommand{\entry}[2]{%
-  #1\par{\itshape #2}\par\addvspace{7pt plus 1pt}%
+  #1\par{\itshape #2}\par\addvspace{6pt plus 1pt}%
 }
 
 \newcommand{\cventry}[4]{%
   #1\hfill{\itshape #2}\par
   \if\relax\detokenize{#3}\relax\else{\itshape #3}\par\fi
   \vspace{3pt}
-  #4\par\addvspace{11pt plus 1pt}%
+  #4\par\addvspace{9pt plus 1pt}%
 }
 
 \newcommand{\columnend}{\par\vskip-\lastskip\kern-\prevdepth\vfilneg}
@@ -67,9 +89,11 @@
 
 \savebox{\idblock}{%
   \begin{minipage}[b]{\dimexpr\linewidth-4cm\relax}
-    {\huge\raisebox{0pt}[\fontcharht\font`D]{\textls*[80]{DAVID ÁLVAREZ ROSA}}\par}
-    \vspace{3pt}
-    {\large\itshape Mathematician \dotsep{} Engineer \dotsep{} Dublin\par}
+    {\centering\pgfornament[width=4.5cm]{87}\par}
+    \vspace{6pt}
+    {\centering\Huge\scshape\href{https://david.alvarezrosa.com/about/}{\textls[12]{\MakeLowercase{David Álvarez Rosa}}}\par}
+    \vspace{0.4pt}
+    {\centering\large\itshape Mathematician \dotsep{} Engineer \dotsep{} Dublin\par}
     \vspace{12pt}
     Low-latency engineer in high-frequency options trading at
     Susquehanna. Represents Ireland on the ISO~C++ standards committee.
@@ -83,13 +107,13 @@
   \raggedleft
   \raisebox{0pt}[\idht][0pt]{\begin{tikzpicture}[baseline={([yshift=0.75pt]p.south)}]
     \node[inner sep=0pt, outer sep=0pt] (p)
-      {\includegraphics[height=\dimexpr\idht+12pt\relax]{img/portrait.png}};
+      {\includegraphics[height=100pt]{img/portrait.png}};
     \node[anchor=south, yshift=2pt, inner xsep=2pt, inner ysep=1pt,
           fill=white, fill opacity=0.7, text opacity=1,
           font=\small\itshape] at (p.south) {March~2022};
   \end{tikzpicture}}%
 \end{minipage}\par
-\vspace{12pt}
+\vspace{10pt}
 
 \begin{paracol}{2}
 
@@ -150,31 +174,30 @@
 \cvsection[10pt]{Skills}
 C++ \dotsep{} Python \dotsep{} Linux \dotsep{} Performance\par
 
-\cvsection{Certifications}
+\cvsection[\sidesep]{Certifications}
 \lineitem{Advanced English (C1)}{Cambridge}
 \lineitem{Machine Learning}{Stanford University}
 \lineitem{Deep Learning}{deeplearning.ai}
 \lineitem{Blockchain}{Hong Kong University}
 \lineitem{Nova Talent Member}{Nova}
 
-\cvsection{Honors {\ulcshape\itshape\&} Awards}
+\cvsection[\sidesep]{Honors {\ulcshape\itshape\&} Awards}
 \entry{Mathematical Olympiad}{Silver (local), honors (national).}
 \entry{Physics Olympiad}{Gold (local), silver (national).}
 \entry{Mobility Scholarship}{Research thesis at Toronto (\texteuro{}6k).}
 \entry{Tuition and Housing Scholarship}{University tuition and housing (\texteuro{}19k).}
 \entry{General Scholarship}{Full tuition plus annual stipend (\texteuro{}11k).}
 
-\cvsection{Volunteering}
+\cvsection[\sidesep]{Volunteering}
 \entry{Mathematics Tutor}{Training for the Mathematical Olympiads.}
 \entry{Food Bank Volunteer}{Food collection at Banco de Alimentos.}
 
-\cvsection{Languages}
+\cvsection[\sidesep]{Languages}
 \lineitem{English}{Proficient}
 \lineitem{Spanish}{Native}
 \lineitem{Catalan}{Intermediate}
 
-\cvsection{Contact}
-\lineitem{\href{https://david.alvarezrosa.com}{david.alvarezrosa.com}}{Website}
+\cvsection[\sidesep]{Contact}
 \lineitem{\href{mailto:david@alvarezrosa.com}{david@alvarezrosa.com}}{Email}
 \lineitem{\href{tel:+34647133930}{+34\,647\,133\,930}}{Phone}
 \lineitem{\href{https://www.linkedin.com/in/david-alvarez-rosa/}{david-alvarez-rosa}}{LinkedIn}
